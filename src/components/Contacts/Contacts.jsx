@@ -1,7 +1,13 @@
-export const Contacts = ({contacts}) => {
+export const Contacts = ({ contacts, filter }) => {
+
     return (
         <ul>
-            {contacts.map(contact => <li key={contact.id}>{contact.name} {contact.number}</li>)}
+            {contacts.map(({name,number,id}) => {
+                const nameOwer = name.toLowerCase();
+                const numberOwer = number.toLowerCase();
+                const filterOwer = filter.toLowerCase();
+                return (nameOwer.includes(filterOwer) || numberOwer.includes(filterOwer)) && (<li key={id}>{name}: {number}</li>)
+            })}
     </ul>
        
     )
