@@ -59,7 +59,7 @@ export class App extends Component {
         indexEl = i;
       }
     }
-    console.log(indexEl);
+
     this.setState(state => {
       const stateRed = [...state.contacts];
       stateRed.splice(indexEl, 1);
