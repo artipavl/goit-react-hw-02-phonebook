@@ -1,4 +1,4 @@
-export const Contacts = ({ contacts, filter }) => {
+export const Contacts = ({ contacts, filter,deleteContact }) => {
 
     return (
         <ul>
@@ -6,7 +6,7 @@ export const Contacts = ({ contacts, filter }) => {
                 const nameOwer = name.toLowerCase();
                 const numberOwer = number.toLowerCase();
                 const filterOwer = filter.toLowerCase();
-                return (nameOwer.includes(filterOwer) || numberOwer.includes(filterOwer)) && (<li key={id}>{name}: {number}</li>)
+                return (nameOwer.includes(filterOwer) || numberOwer.includes(filterOwer)) && (<li key={id}>{name}: {number} <button data-id={id} type="button" onClick={deleteContact}>Delete</button></li>)
             })}
     </ul>
        

@@ -27,7 +27,7 @@ export class App extends Component {
         return;
       }
     }
-    
+
     this.setState(({ contacts, name, number }) => {
       return {
         contacts: [...contacts, { id: nanoid(), name: name, number: number }],
@@ -49,6 +49,26 @@ export class App extends Component {
     });
   };
 
+  deleteContact = e => {
+    // console.log(e.target.dataset.id)
+    const edEl = e.target.dataset.id;
+    const { contacts } = this.state;
+    let indexEl;
+    for (let i = 0; i < contacts.length; i++) {
+      if (contacts[i].id === edEl) {
+        indexEl = i;
+      }
+    }
+    console.log(indexEl);
+    this.setState(state => {
+      const stateRed = [...state.contacts];
+      stateRed.splice(indexEl, 1);
+      return {
+        ...state,
+        contacts: stateRed,
+      };
+    });
+  };
 
   render() {
     return (
@@ -58,7 +78,11 @@ export class App extends Component {
         </Section>
         <Section title="Contacts">
           <Filter input={this.inputForm} />
-          <Contacts contacts={this.state.contacts} filter={this.state.filter} />
+          <Contacts
+            contacts={this.state.contacts}
+            filter={this.state.filter}
+            deleteContact={this.deleteContact}
+          />
         </Section>
       </>
     );
