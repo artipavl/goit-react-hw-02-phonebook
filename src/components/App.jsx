@@ -15,42 +15,18 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
-  submitForm = e => {
-    e.preventDefault();
-
-    for (const contact of this.state.contacts) {
-      if (contact.name.toLowerCase() === this.state.name.toLowerCase()) {
-        alert('povtor');
-        return;
-      }
-    }
-
-    this.setState(({ contacts, name, number }) => {
-      return {
-        contacts: [...contacts, { id: nanoid(), name: name, number: number }],
-        filter: '',
-        name: '',
-        number: '',
+ 
+  addContact = (name, number) => {
+        this.setState(({ contacts, filter}) => {
+          return {
+        contacts: [...contacts, { id: nanoid(), name, number}],
+        filter,
       };
     });
-    e.currentTarget.reset();
-  };
-
-  inputForm = e => {
-    const input = e.target;
-    this.setState(stat => {
-      return {
-        ...stat,
-        [input.name]: input.value,
-      };
-    });
-  };
+  }
 
   deleteContact = e => {
-    // console.log(e.target.dataset.id)
     const edEl = e.target.dataset.id;
     const { contacts } = this.state;
     let indexEl;
@@ -70,21 +46,32 @@ export class App extends Component {
     });
   };
 
+    changeFilter = e => {
+    const input = e.target;
+    this.setState(stat => {
+      return {
+        ...stat,
+        [input.name]: input.value,
+      };
+    });
+  };
+
   render() {
+    const {filter, contacts} = this.state;
     return (
-      <>
+      <div>
         <Section title="Phonebook">
-          <Phonebook submitForm={this.submitForm} inputForm={this.inputForm} />
+          <Phonebook addContact={this.addContact} contacts={contacts} />
         </Section>
         <Section title="Contacts">
-          <Filter input={this.inputForm} />
+          <Filter change={this.changeFilter} value={filter} />
           <Contacts
-            contacts={this.state.contacts}
-            filter={this.state.filter}
+            contacts={contacts}
+            filter={filter}
             deleteContact={this.deleteContact}
           />
         </Section>
-      </>
+      </div>
     );
   }
 }

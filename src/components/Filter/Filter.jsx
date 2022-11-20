@@ -1,8 +1,10 @@
-export const Filter = ({input}) => {
+export const Filter = ({change,value}) => {
     return (
         <div>
-                    <input 
-                    onInput={input}
+            <p>Find contacts by name</p>
+            <input 
+                value = {value}
+                    onChange={change}
   type="text"
   name="filter"
   title="filter"
