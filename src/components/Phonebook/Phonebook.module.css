@@ -11,13 +11,6 @@
 
 .phonebookButton{
     width: 150px;
-    border-radius: 4px;
-    box-shadow: 0px 4px 4px rgb(0 0 0 / 15%);
-    background-color: #fff;
-    cursor: pointer;
 }
-.phonebookButton:hover,
-.phonebookButton:focus{
-    background-color: #2196f3;
-}
+
 
