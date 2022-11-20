@@ -9,18 +9,18 @@ export class Phonebook extends Component {
 
   submitForm = e => {
     e.preventDefault();
-
+    const { name, number } = this.state;
     for (const contact of this.props.contacts) {
       if (
-        contact.name.toLowerCase() === this.state.name.toLowerCase() ||
-        contact.number.toLowerCase() === this.state.number.toLowerCase()
+        contact.name.toLowerCase() === name.toLowerCase() ||
+        contact.number.toLowerCase() === number.toLowerCase()
       ) {
-        alert('povtor');
+        alert(`${name} is already in contacts.`);
         return;
       }
     }
 
-    this.props.addContact(this.state.name, this.state.number);
+    this.props.addContact(name, number);
 
     this.setState({
       name: '',
