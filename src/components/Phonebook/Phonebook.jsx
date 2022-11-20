@@ -1,4 +1,5 @@
 import { React, Component } from 'react';
+// import PropTypes from 'prop-types';
 import css from 'components/Phonebook/Phonebook.module.css';
 
 export class Phonebook extends Component {
@@ -55,7 +56,7 @@ export class Phonebook extends Component {
           />
         </label>
 
-        <label >
+        <label>
           <span className={css.phonebookLableTitle}>Number</span>
           <input
             value={number}
@@ -68,8 +69,21 @@ export class Phonebook extends Component {
           />
         </label>
 
-        <button type="submit" className={css.phonebookButton}>add contacts</button>
+        <button type="submit" className={css.phonebookButton}>
+          add contacts
+        </button>
       </form>
     );
   }
 }
+
+// Phonebook.prototype = {
+//   addContact: PropTypes.func.isRequired,
+//   contacts: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       name: PropTypes.string.isRequired,
+//       number: PropTypes.string.isRequired,
+//       id: PropTypes.string.isRequired,
+//     })
+//   ).isRequired,
+// };
