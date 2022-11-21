@@ -17,13 +17,11 @@ export const ContactItem = ({ contact, deleteContact }) => {
     )
 }
 
-ContactItem.prototype = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
+ContactItem.propTypes = {
+  contact: PropTypes.shape({
       name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
       id: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+    }).isRequired,
   deleteContact: PropTypes.func.isRequired,
 };
