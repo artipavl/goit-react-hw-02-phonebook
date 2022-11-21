@@ -16,17 +16,17 @@ export class App extends Component {
     ],
     filter: '',
   };
- 
+
   addContact = (name, number) => {
-        this.setState(({ contacts, filter}) => {
-          return {
-        contacts: [...contacts, { id: nanoid(), name, number}],
+    this.setState(({ contacts, filter }) => {
+      return {
+        contacts: [...contacts, { id: nanoid(), name, number }],
         filter,
       };
     });
-  }
+  };
 
-  deleteContact = (id) => {
+  deleteContact = id => {
     const { contacts } = this.state;
     let indexEl;
     for (let i = 0; i < contacts.length; i++) {
@@ -45,7 +45,7 @@ export class App extends Component {
     });
   };
 
-    changeFilter = e => {
+  changeFilter = e => {
     const input = e.target;
     this.setState(stat => {
       return {
@@ -56,7 +56,10 @@ export class App extends Component {
   };
 
   render() {
-    const {filter, contacts} = this.state;
+    const { filter, contacts } = this.state;
+    const contactsFil = contacts.filter(({ name }) =>
+      name.toLowerCase().includes(filter.toLowerCase())
+    );
     return (
       <div>
         <Section title="Phonebook">
@@ -65,8 +68,7 @@ export class App extends Component {
         <Section title="Contacts">
           <Filter change={this.changeFilter} value={filter} />
           <Contacts
-            contacts={contacts}
-            filter={filter}
+            contacts={contactsFil}
             deleteContact={this.deleteContact}
           />
         </Section>

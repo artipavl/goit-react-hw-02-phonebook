@@ -1,27 +1,21 @@
 import PropTypes from 'prop-types';
 import css from 'components/Contacts/Contacts.module.css';
 
-export const Contacts = ({ contacts, filter, deleteContact }) => {
+export const Contacts = ({ contacts, deleteContact }) => {
   return (
     <ul className={css.list}>
       {contacts.map(({ name, number, id }) => {
-        const nameOwer = name.toLowerCase();
-        const numberOwer = number.toLowerCase();
-        const filterOwer = filter.toLowerCase();
         return (
-          (nameOwer.includes(filterOwer) ||
-            numberOwer.includes(filterOwer)) && (
-            <li key={id} className={css.item}>
-              {name}: {number}{' '}
-              <button
-                type="button"
-                onClick={()=>deleteContact(id)}
-                className={css.button}
-              >
-                Delete
-              </button>
-            </li>
-          )
+          <li key={id} className={css.item}>
+            {name}: {number}
+            <button
+              type="button"
+              onClick={() => deleteContact(id)}
+              className={css.button}
+            >
+              Delete
+            </button>
+          </li>
         );
       })}
     </ul>
