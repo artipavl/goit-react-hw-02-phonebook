@@ -14,9 +14,8 @@ export const Contacts = ({ contacts, filter, deleteContact }) => {
             <li key={id} className={css.item}>
               {name}: {number}{' '}
               <button
-                data-id={id}
                 type="button"
-                onClick={deleteContact}
+                onClick={()=>deleteContact(id)}
                 className={css.button}
               >
                 Delete

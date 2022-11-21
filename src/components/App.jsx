@@ -26,12 +26,11 @@ export class App extends Component {
     });
   }
 
-  deleteContact = e => {
-    const edEl = e.target.dataset.id;
+  deleteContact = (id) => {
     const { contacts } = this.state;
     let indexEl;
     for (let i = 0; i < contacts.length; i++) {
-      if (contacts[i].id === edEl) {
+      if (contacts[i].id === id) {
         indexEl = i;
       }
     }
