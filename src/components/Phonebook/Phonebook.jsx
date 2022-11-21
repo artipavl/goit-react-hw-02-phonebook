@@ -12,10 +12,7 @@ export class Phonebook extends Component {
     e.preventDefault();
     const { name, number } = this.state;
     for (const contact of this.props.contacts) {
-      if (
-        contact.name.toLowerCase() === name.toLowerCase() ||
-        contact.number.toLowerCase() === number.toLowerCase()
-      ) {
+      if (contact.name.toLowerCase() === name.toLowerCase()) {
         alert(`${name} is already in contacts.`);
         return;
       }
