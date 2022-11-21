@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 
 import { Section } from 'components/Section/Section';
 import { Phonebook } from 'components/Phonebook/Phonebook';
-import { Contacts } from 'components/Contacts/Contacts';
+import { ContactList } from 'components/Contacts/ContactList';
 import { Filter } from 'components/Filter/Filter';
 
 export class App extends Component {
@@ -67,7 +67,7 @@ export class App extends Component {
         </Section>
         <Section title="Contacts">
           <Filter change={this.changeFilter} value={filter} />
-          <Contacts
+          <ContactList
             contacts={contactsFil}
             deleteContact={this.deleteContact}
           />
